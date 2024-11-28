@@ -9,9 +9,7 @@ public class EmployeeManager {
         if (args[0].equals("l")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader r = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("employees.txt")));
+                BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
                 String l = r.readLine();
                 String e[] = l.split(",");
                 for (String emp : e) {
@@ -23,9 +21,7 @@ public class EmployeeManager {
         } else if (args[0].equals("s")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader r = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("employees.txt")));
+                BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
                 String l = r.readLine();
                 System.out.println(l);
                 String e[] = l.split(",");
@@ -68,9 +64,7 @@ public class EmployeeManager {
         } else if (args[0].contains("c")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader r = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("employees.txt")));
+                BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
                 String l = r.readLine();
                 char[] chars = l.toCharArray();
                 boolean inWord = false;
@@ -92,9 +86,7 @@ public class EmployeeManager {
         } else if (args[0].contains("u")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader r = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("employees.txt")));
+                BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
                 String l = r.readLine();
                 String e[] = l.split(",");
                 String n = args[0].substring(1);
@@ -113,9 +105,7 @@ public class EmployeeManager {
         } else if (args[0].contains("d")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader r = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("employees.txt")));
+                BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
                 String l = r.readLine();
                 String e[] = l.split(",");
                 String n = args[0].substring(1);
