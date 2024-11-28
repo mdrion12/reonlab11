@@ -3,15 +3,6 @@
 import java.io.*;
 import java.util.*;
 
-public class constant {
-    public static final String FILE_PATH = "employees.txt";
-    public static final String DATA_LOADING = "Loading data ...";
-    public static final String DATA_LOADED = "Data Loaded.";
-    public static final String INVALID_ARGUMENT = "Invalid argument. Please provide a valid command.";
-    public static final String EMPLOYEE_NOT_FOUND = "employee not found.";
-    public static final String EMPLOYEE_FOUND = "Employee Found.";
-}
-
 public class EmployeeManager {
     public static void main(String[] args) {
 
@@ -19,13 +10,12 @@ public class EmployeeManager {
             System.out.println("No argument provide");
             return;
         }
-        constant cons = new constant();
         // Check arguments
         if (args[0].equals("l")) {
             System.out.println("Loading data ...");
             try {
                 BufferedReader fileReader = new BufferedReader(
-                        new InputStreamReader(new FileInputStream(cons.FILE_PATH)));
+                        new InputStreamReader(new FileInputStream("employees.txt")));
                 String employee = fileReader.readLine();
                 String e[] = employee.split(",");
                 for (String emp : e) {
@@ -33,10 +23,11 @@ public class EmployeeManager {
                 }
             } catch (Exception e) {
             }
-            System.out.println(cons.DATA_LOADED);
+            System.out.println("Data Loaded.");
         } else if (args[0].equals("s")) {
-            System.out.println(cons.DATA_LOADING);
+            System.out.println("Loading data ...");
             try {
+                // search a word fro file.
                 BufferedReader fileReader = new BufferedReader(
                         new InputStreamReader(new FileInputStream("employees.txt")));
                 String employee = fileReader.readLine();
@@ -46,38 +37,40 @@ public class EmployeeManager {
                 int idx = rand.nextInt(e.length);
                 System.out.println(e[idx]);
             } catch (Exception e) {
+                // throw exception
             }
-            System.out.println(cons.DATA_LOADED);
+            System.out.println("Data Loaded.");
         } else if (args[0].contains("+")) {
-            System.out.println(cons.DATA_LOADING);
+            System.out.println("Loading data ...");
             try {
                 BufferedWriter filewriter = new BufferedWriter(new FileWriter("employees.txt", true));
                 String newemployee = args[0].substring(1);
                 filewriter.write(", " + newemployee);
                 filewriter.close();
             } catch (Exception e) {
+                // throw exception
             }
-            System.out.println(cons.DATA_LOADED);
+            System.out.println("Data Loaded.");
         } else if (args[0].contains("?")) {
-            System.out.println(cons.DATA_LOADING);
+            System.out.println("Loading data ...");
             try {
-                BufferedReader filReader = new BufferedReader(
-                        new InputStreamReader(new FileInputStream("employees.txt")));
-                String employee = filReader.readLine();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
+                String employee = reader.readLine();
                 String e[] = employee.split(",");
                 boolean found = false;
                 String s = args[0].substring(1);
                 for (int i = 0; i < e.length && !found; i++) {
                     if (e[i].equals(s)) {
-                        System.out.println(cons.EMPLOYEE_FOUND);
+                        System.out.println("Employee found!");
                         found = true;
                     }
                 }
             } catch (Exception e) {
+                // throw exception
             }
-            System.out.println(cons.DATA_LOADED);
+            System.out.println("Data Loaded.");
         } else if (args[0].contains("c")) {
-            System.out.println(cons.DATA_LOADING);
+            System.out.println("Loading data ...");
             try {
                 BufferedReader fileReader = new BufferedReader(
                         new InputStreamReader(new FileInputStream("employees.txt")));
@@ -98,9 +91,9 @@ public class EmployeeManager {
                 System.out.println(count + " word(s) found " + chars.length);
             } catch (Exception e) {
             }
-            System.out.println(cons.DATA_LOADED);
+            System.out.println("Data Loaded.");
         } else if (args[0].contains("u")) {
-            System.out.println(cons.DATA_LOADING);
+            System.out.println("Loading data ...");
             try {
                 BufferedReader fileReader = new BufferedReader(
                         new InputStreamReader(new FileInputStream("employees.txt")));
@@ -117,10 +110,11 @@ public class EmployeeManager {
                 w.close();
             } catch (Exception e) {
             }
-            System.out.println(cons.DATA_LOADED);
+            System.out.println("Data Updated.");
         } else if (args[0].contains("d")) {
-            System.out.println(cons.DATA_LOADING);
+            System.out.println("Loading data ...");
             try {
+                // read from file
                 BufferedReader fileReader = new BufferedReader(
                         new InputStreamReader(new FileInputStream("employees.txt")));
                 String employee = fileReader.readLine();
@@ -128,7 +122,8 @@ public class EmployeeManager {
                 String n = args[0].substring(1);
                 List<String> list = new ArrayList<>(Arrays.asList(e));
                 list.remove(n);
-                BufferedWriter w = new BufferedWriter(new FileWriter("employees.txt"));
+                BufferedWriter w = new BufferedWriter(
+                        new FileWriter("employees.txt"));
                 w.write(String.join(",", list));
                 w.close();
             } catch (Exception e) {
